@@ -1,42 +1,82 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-   <meta charset='utf-8' />
-   <title>Bootstrap 实例 - 超大屏幕（Jumbotron）</title>
-   <link href="css/bootstrap.min.css" rel="stylesheet">
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css" integrity="sha384-i1LQnF23gykqWXg6jxC2ZbCbUMxyw5gLZY6UiUS98LYV5unm8GWmfkIS6jqJfb4E" crossorigin="anonymous">
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" ntegrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
    <script src="js/jquery-3.4.1.min.js"></script>
-   <script src="js/bootstrap.min.js"></script>
+   <script src="js/video-player.js"></script>
+   <title>Customize Vedio Player on HTML5</title>
 </head>
+
 <body>
-   <div class="container" style="max-width: 72%; margin-top: 50px;">
+   <div class="container" style="margin-top: 15px;">
+      <div class="header clearfix">
+         <nav>
+            <ul class="nav nav-pills pull-right">
+               <li role="presentation"><a onclick='loadVideo("./video/example.mp4");'>Example-1</a></li>
+               <li role="presentation"><a onclick='loadVideo("./video/Example1.mp4");'>Example-2</a></li>
+               <li role="presentation"><a onclick='loadVideo("./video/example2.mp4");'>Example-3</a></li>
+            </ul>
+         </nav>
+         <h3 class="text-muted">Customize Vedio Player on HTML5</h3>
+      </div>
+
       <div class="jumbotron">
-         <h1>Customize Vedio Player on HTML5</h1>
-         <div class="vedio">
-            <div class="vedio-container">
-               <video id='media-video'>
-                  <source src='./video/example.mp4' type='video/mp4'>
-               </video>
-               <div class="progress">
-                  <div id='progress-bar' class="progress-bar bg-dark progress-bar-success progress-bar-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
-               </div>
-            </div>
-             <div class="vedio-toolbar">
-               <button type='button' id='replay-button' class='btn btn-dark' onclick='replayMedia();'>
-                  <em class="fas fa-reply"></em>
-               </button>   
-               <button type="button" id='play-pause-button' class="btn btn-dark"  onclick='togglePlayPause();'>
-                  <em id="play-pause-icon" class="far fa-play-circle"></em>
-               </button>
-               <button type='button' id='stop-button' class='btn btn-dark' onclick='stopPlayer();'><em class='fas fa-stop-circle'></em></button>
-               <button type='button' id='volume-inc-button' class='btn btn-dark' onclick='changeVolume("+");'><em class="fas fa-plus-circle"></em></button>
-               <button type='button' id='volume-dec-button' class='btn btn-dark' onclick='changeVolume("-");'><em class="fas fa-minus-circle"></em></button>
-               <button type='button' id='mute-button' class='btn btn-dark' onclick='toggleMute("true");'><em id='mute-icon' class="fas fa-volume-up"></em><span id='video-volume' class="badge badge-light" style="color: lightblue;"></span>
-               </button>
-               <button type='button' id='like-button' class='btn btn-dark' onclick='likeVideo()'><em class="far fa-thumbs-up"></em><span id='video-like' class="badge badge-light" style="color: green;"></span></button>
-               <button type='button' id='unlike-button' class='btn btn-dark' onclick='unlikeVideo()'><em class="far fa-thumbs-down"></em><span id='video-unlike' class="badge badge-light" style="color: red;"></span></button>
-            </div>
+         <video id='video-player' style="width: 100%;">
+            <source src='./video/example.mp4' type='video/mp4'>
+         </video>
+         <div class="progress">
+            <div id='progress_bar' class="progress_bar bg-dark progress_bar-success progress_bar-striped active"
+               role="progressbar" aria-valuenow="0" aria-valuiin="0" aria-valuiax="100" style="width: 0%"></div>
          </div>
       </div>
+
+      <div class="jumbotron">
+         <button type='button' id='btn_replay' class="btn btn-primary" onclick='replayMedia();'>
+            <i class="fas fa-reply"></i>
+         </button>
+
+         <button type="button" id='btn_play_pause' class="btn btn-success" onclick='togglePlayPause();'>
+            <i id="icon_paly_pause" class="far fa-play-circle"></i>
+         </button>
+
+         <button type='button' id='btn_stop' class='btn btn-danger' onclick='stopPlayer();'>
+            <i class='fas fa-stop-circle'></i>
+         </button>
+
+         <button type='button' id='btn_vol_add' class='btn btn-dark' onclick='changeVolume("+");'>
+            <i class="fas fa-plus-circle"></i>
+         </button>
+
+         <button type='button' id='btn_vol_reduce' class='btn btn-dark' onclick='changeVolume("-");'>
+            <i class="fas fa-minus-circle"></i>
+         </button>
+
+         <button type='button' id='btn_mute' class='btn btn-dark' onclick='toggliute("true");'>
+            <i id='icon_mute' class="fas fa-volume-up"></i>
+            <span id='video_volume' style="color: black;"></span>
+         </button>
+
+         <button type='button' id='btn_like' class='btn btn-dark' onclick='likeVideo()'>
+            <i class="far fa-thumbs-up"></i>
+            <span id='video_like' style="color: black;"></span>
+         </button>
+
+         <button type='button' id='btn_unlike' class='btn btn-dark' onclick='unlikeVideo()'>
+            <i class="far fa-thumbs-down"></i>
+            <span id='video_unlike' style="color: black;"></span>
+         </button>
+      </div>
+
+
+
    </div>
+
+
 </body>
+
 </html>
